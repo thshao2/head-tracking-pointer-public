@@ -1,0 +1,95 @@
+/* Hide the real cursor everywhere */
+html, body, * {
+  cursor: none !important;
+}
+
+/* Alternative Virtual sprite */
+/* #ht-cursor {
+  width: 24px;
+  height: 24px;
+  background: radial-gradient(red 35%, rgba(255, 255, 255, 0.918) 60%, transparent 61%);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;                 
+  z-index: 2147483647;
+  transform: translate(-50%, -50%);
+  transition: transform 40ms linear;
+} */
+
+/* Main Virtual sprite */
+#ht-cursor {
+  position: fixed;
+  width: 22px;
+  height: 32px;
+  pointer-events: none;
+  z-index: 2147483647;
+}
+
+#ht-cursor .cursor-inner {
+  width: 60%;
+  height: 60%;
+  background: black;
+  clip-path: polygon(
+    0% 0%, 
+    0% 100%, 
+    20% 80%, 
+    0% 100%, 
+    40% 75%, 
+    100% 75%, 
+    0% 0%
+  );
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.5));
+}
+
+#ht-cursor .cursor-inner::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 1px;
+  width: calc(100% - 2px);
+  height: calc(100% - 4px);
+  background: white;
+  clip-path: inherit;
+}
+
+#ht-cursor .cursor-notch {
+  position: absolute;
+  left: 3.5px;
+  top: 14px;
+  width: 3px;
+  height: 6px;
+  background: black;
+  /* box-shadow: 1px 1px 1px rgba(0,0,0,0.2); */
+  transform: rotate(-26deg);
+  transform-origin: top left;
+}
+
+#ht-cursor .cursor-notch::after {
+  content: "";
+  position: absolute;
+  top: 0.25px;
+  left: 0.5px;
+  width: calc(100% - 0.5px);
+  height: calc(100% - 1px);
+  background: white;
+}
+
+#ht-cursor .cursor-inner::after,
+#ht-cursor .cursor-notch::after {
+  background: var(--cursor-fill, white);
+}
+
+#ht-cursor.hovering-link {
+  --cursor-fill: limegreen;
+}
+
+/* Only draw the effect when the class lands on an <a> */
+a.ht-hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Head-Controlled Cursor",
+  "version": "0.1.0",
+  "description": "Move a virtual cursor with head-pose tracking.",
+  "permissions": [
+    "scripting",
+    "storage",
+    "tabs",
+    "offscreen"
+  ],
+  "action": {
+    "default_popup": "src/popup/index.html"
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self';"
+  },
+  "background": {
+    "service_worker": "src/background/index.js",
+    "type": "module"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "content/cursor.css",
+        "vendor/tasks-vision/wasm/*",
+        "vendor/models/face_landmarker.task"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}
