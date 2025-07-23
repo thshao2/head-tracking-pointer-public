@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.1 (2025-07-23)
+
+Full Changelog: [v0.2.0...v0.2.1](https://github.com/thshao2/head-tracking-chrome-extension/compare/v0.2.0...v0.2.1)
+
+### Bug Fixes:
+- Fixed a UI bug where if the user selected “Raise Eyebrows” as a click action, an incorrect description was shown. The correct description of “Raise your eyebrows to click” is now shown correctly for this respective click action.
+- Fixed a bug where if a user opted to stop the head tracking process while a webpage was still scrolling, the page would continue to actively scroll.
+- Fixed a bug where starting the head tracking process a second time would not properly reinitialize the cursor on all active tabs (excluding the current focused tab).
+
 ## 0.2.0 (2025-07-22)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/thshao2/head-tracking-chrome-extension/compare/v0.1.0...v0.2.0)
