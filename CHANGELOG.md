@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.2 (2025-07-24)
+
+Full Changelog: [v0.2.1...v0.2.2](https://github.com/thshao2/head-tracking-chrome-extension/compare/v0.2.1...v0.2.2)
+
+### Features:
+- When clicking on “Start Head Tracking”, the cursor is now initialized at the center of the screen. Previously, it was at the top left corner. 
+
+### Bug Fixes:
+- Fixed an intermittent bug where the area and locations the cursor was allowed to move in were completely off once “Start Head Tracking” was clicked. This occurred due to a race condition in which the calibration file was still being processed under the hood, but the MediaPipe FaceLandmarker pipeline was already completed and sending facial landmark data. This resulted in a fallback algorithm being used that would attempt to control the cursor through a basic, uncalibrated mapping. This basic, uncalibrated algorithm caused unexpected behaviors to the location of the cursor even once the calibration file was fully processed.
+
 ## 0.2.1 (2025-07-23)
 
 Full Changelog: [v0.2.0...v0.2.1](https://github.com/thshao2/head-tracking-chrome-extension/compare/v0.2.0...v0.2.1)
