@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.3.0 (2025-08-04)
+
+Full Changelog: [v0.2.2...v0.3.0](https://github.com/thshao2/head-tracking-chrome-extension/compare/v0.2.2...v0.3.0)
+
+### Features:
+- **Increased Sensitivity:** Increased the sensitivity of the jawOpen (open your mouth wide) facial gesture.
+Dwell Click: Added a new setting to the settings section of the popup: “Enable Dwell Click” (toggle on/off). Turning this setting on will have the cursor generate a click action if the cursor dwells within a small px area (configured in the dwellArea setting) for more than some number of ms (configured in the dwellTime setting). The dwellArea setting allows the cursor to not have to be completely stopped to register a click action. If enabled, the user will be able to configure an additional two values:
+  - The dwell area (px): Small movement threshold around the exact position to be clicked, in pixels of the screen. This is the pointer movement allowed while dwelling, before a click action is generated. The value must be between 3 - 100px, or an error is shown.
+  - The dwell time (ms): Time to wait in ms before generating a click action. This value must be between 300 - 5000ms, or an error is shown.
+
+### Bug Fixes:
+- **BREAKING CHANGE:** Fixed an issue where the calibration data did not scale properly to different screen dimensions, thus having the cursor experience erratic, unpredictable behavior. To resolve this issue, new metadata has been added to the calibration file, storing the width x height of the screen dimensions the user performed the calibration in. Using this metadata, appropriate scaling to the cursor movement/position is carried out if the user decides to use the same calibration on a different device (with a smaller/larger screen resolution). For users who do not reuse the calibration file on different devices, this change will not affect the behavior of the cursor. However, for other users using the calibration file on different devices, a re-calibration is necessary. 
+
+### Chores:
+- **internal:** npm dependency internal version bump ([304f9c3](https://github.com/thshao2/head-tracking-chrome-extension/commit/304f9c3470ae72059f5b327be706d458db37ee0d))
+- **internal:** refactor eslint.config.js, move globals to languageOptions object, add ignores to public/** and vite.config.js ([304f9c3](https://github.com/thshao2/head-tracking-chrome-extension/commit/304f9c3470ae72059f5b327be706d458db37ee0d)) ([a763019](https://github.com/thshao2/head-tracking-chrome-extension/commit/a763019bbe3881d330bb20a85cde1ab696e6b359))
+- **internal:** fix all eslint warnings and errors, clean up unused functions in content scripts ([80cfc7d](https://github.com/thshao2/head-tracking-chrome-extension/commit/80cfc7d0dc4d388ccbe3c44bba8f0339760145a3)) ([289c767](https://github.com/thshao2/head-tracking-chrome-extension/commit/289c767f1c77a3daf31d7a15cecd22f56e53dea4))
+- **docs:** add CHANGELOG.md file to repo ([5adb457](https://github.com/thshao2/head-tracking-chrome-extension/commit/5adb4576185f16e99827c937caa45b12957b0a22))
+- **ci:** add GitHub Actions CI/CD pipeline for building and publishing new releases ([ffae8d4](https://github.com/thshao2/head-tracking-chrome-extension/commit/ffae8d4033a13bb658b777e0d41ea9887a708736))
+
 ## 0.2.2 (2025-07-24)
 
 Full Changelog: [v0.2.1...v0.2.2](https://github.com/thshao2/head-tracking-chrome-extension/compare/v0.2.1...v0.2.2)
