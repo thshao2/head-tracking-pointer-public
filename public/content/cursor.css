@@ -1,24 +1,4 @@
-/* Hide the real cursor everywhere */
-html, body, * {
-  cursor: none !important;
-}
-
-/* Alternative Virtual sprite */
-/* #ht-cursor {
-  width: 24px;
-  height: 24px;
-  background: radial-gradient(red 35%, rgba(255, 255, 255, 0.918) 60%, transparent 61%);
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;                 
-  z-index: 2147483647;
-  transform: translate(-50%, -50%);
-  transition: transform 40ms linear;
-} */
-
-/* Main Virtual sprite */
+/* Main Virtual Sprite */
 #ht-cursor {
   position: fixed;
   width: 22px;
@@ -32,12 +12,12 @@ html, body, * {
   height: 60%;
   background: black;
   clip-path: polygon(
-    0% 0%, 
-    0% 100%, 
-    20% 80%, 
-    0% 100%, 
-    40% 75%, 
-    100% 75%, 
+    0% 0%,
+    0% 100%,
+    20% 80%,
+    0% 100%,
+    40% 75%,
+    100% 75%,
     0% 0%
   );
   position: absolute;
@@ -92,4 +72,41 @@ html, body, * {
 a.ht-hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+/* -------- Dwell Click Visual Ring -------- */
+#ht-cursor .dwell-ring {
+  position: absolute;
+  width: 26px;
+  height: 38px;
+  left: -8.5px;
+  top: -9.5px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+#ht-cursor.dwell-active .dwell-ring {
+  opacity: 1;
+}
+
+:root {
+  --dwell-track: rgba(0, 0, 0, 0.25);
+  --dwell-progress: rgb(253, 194, 3);
+  --dwell-near-done: #f80c8e;
+}
+
+#ht-cursor .dwell-ring circle.track {
+  fill: none;
+  stroke: var(--dwell-track);
+  stroke-width: 3.5;
+}
+
+#ht-cursor .dwell-ring circle.progress {
+  fill: none;
+  stroke: var(--dwell-progress);
+  stroke-linecap: round;
+  stroke-width: 3.5;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
 }

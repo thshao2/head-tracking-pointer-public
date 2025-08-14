@@ -88,8 +88,14 @@ Open the popup again while tracking will to configure the following:
 
 3. 🧲 Click Assist. 
 
-    Helps reduce accidental cursor drift during a facial gesture. “Click Assist” locks the cursor to interactive, clickable elements up to a 100px radius once you have entered inside of it. To unlock the cursor from an interactive element, move >100px away.
+    Helps reduce accidental cursor drift during a facial gesture. Once you have entered an interactive element, “Click Assist” locks the cursor to it, even if you move away from it (up to a certain distance and time). Allows for two additional configurable settings:
 
+      - Click Assist Radius (in pixels):
+        The distance from the element in which the cursor will remain locked (30-500px).
+      
+      - Click Assist Timeout (in milliseconds):
+        The amount of time the cursor will remain locked after leaving the element (0.5-10 seconds).
+    
 4. ⏱️ Dwell Click 
 
     Triggers a click after the cursor remains within a small area for a specified duration. Allows for two additional configurable settings:
@@ -100,4 +106,9 @@ Open the popup again while tracking will to configure the following:
       - Dwell Time (in milliseconds):
         Time to remain within the dwell area before clicking (300–5000 ms).
 
+    Once 40% of the dwell time has elapsed, a visual progress ring indicator will show the time remaining until a click is triggered.
+
 ✅ All settings are automatically saved and persist across sessions.
+
+
+
